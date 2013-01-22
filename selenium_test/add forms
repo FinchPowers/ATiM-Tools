@@ -1,0 +1,320 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head profile="http://selenium-ide.openqa.org/profiles/test-case">
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<link rel="selenium.base" href="http://localhost:8888/workspace/atim/" />
+<title>add forms</title>
+</head>
+<body>
+<table cellpadding="1" cellspacing="1" border="1">
+<thead>
+<tr><td rowspan="1" colspan="3">add forms</td></tr>
+</thead><tbody>
+<tr>
+	<td>open</td>
+	<td>ClinicalAnnotation/Participants/add</td>
+	<td></td>
+</tr>
+<tr>
+	<td>click</td>
+	<td>link=Submit</td>
+	<td></td>
+</tr>
+<tr>
+	<td>click</td>
+	<td>css=input.submit</td>
+	<td></td>
+</tr>
+<!--Test 1-->
+<tr>
+	<td>verifyElementPresent</td>
+	<td>name=data[Participant][participant_identifier]</td>
+	<td></td>
+</tr>
+<tr>
+	<td>type</td>
+	<td>name=data[Participant][participant_identifier]</td>
+	<td>sel_part_id</td>
+</tr>
+<tr>
+	<td>select</td>
+	<td>name=data[Participant][title]</td>
+	<td>label=Mr.</td>
+</tr>
+<tr>
+	<td>type</td>
+	<td>name=data[Participant][first_name]</td>
+	<td>FN</td>
+</tr>
+<tr>
+	<td>type</td>
+	<td>name=data[Participant][middle_name]</td>
+	<td>MN</td>
+</tr>
+<tr>
+	<td>type</td>
+	<td>name=data[Participant][last_name]</td>
+	<td>LN</td>
+</tr>
+<tr>
+	<td>type</td>
+	<td>name=data[Participant][notes]</td>
+	<td>note field</td>
+</tr>
+<tr>
+	<td>clickAndWait</td>
+	<td>css=input.submit</td>
+	<td></td>
+</tr>
+<!--Test 2-->
+<tr>
+	<td>verifyTextPresent</td>
+	<td>Your data has been saved.</td>
+	<td></td>
+</tr>
+<tr>
+	<td>verifyTextPresent</td>
+	<td>sel_part_id</td>
+	<td></td>
+</tr>
+<tr>
+	<td>verifyTextPresent</td>
+	<td>Mr.</td>
+	<td></td>
+</tr>
+<tr>
+	<td>verifyTextPresent</td>
+	<td>FN</td>
+	<td></td>
+</tr>
+<tr>
+	<td>verifyTextPresent</td>
+	<td>MN</td>
+	<td></td>
+</tr>
+<tr>
+	<td>verifyTextPresent</td>
+	<td>LN</td>
+	<td></td>
+</tr>
+<!--Test 3 - Testing creation and modified fields-->
+<tr>
+	<td>clickAndWait</td>
+	<td>link=Edit</td>
+	<td></td>
+</tr>
+<tr>
+	<td>type</td>
+	<td>name=data[Participant][first_name]</td>
+	<td>FN updated</td>
+</tr>
+<tr>
+	<td>clickAndWait</td>
+	<td>css=input.submit</td>
+	<td></td>
+</tr>
+<tr>
+	<td>verifyTextPresent</td>
+	<td>Your data has been updated.</td>
+	<td></td>
+</tr>
+<tr>
+	<td>verifyTextPresent</td>
+	<td>FN updated </td>
+	<td></td>
+</tr>
+<!--Test 4 - Testing unique contraint-->
+<tr>
+	<td>clickAndWait</td>
+	<td>//div[@id='header']/div/ul[2]/li/a</td>
+	<td></td>
+</tr>
+<tr>
+	<td>clickAndWait</td>
+	<td>link=Add Participant</td>
+	<td></td>
+</tr>
+<tr>
+	<td>type</td>
+	<td>name=data[Participant][participant_identifier]</td>
+	<td>sel_part_id</td>
+</tr>
+<tr>
+	<td>clickAndWait</td>
+	<td>css=input.submit</td>
+	<td></td>
+</tr>
+<tr>
+	<td>verifyTextPresent</td>
+	<td>Error - Participant Identifier must be unique! (Participant Identifier)</td>
+	<td></td>
+</tr>
+<!--Test 5 - Verify autocomplete-->
+<tr>
+	<td>focus</td>
+	<td>name=data[Participant][cod_icd10_code]</td>
+	<td></td>
+</tr>
+<tr>
+	<td>type</td>
+	<td>name=data[Participant][cod_icd10_code]</td>
+	<td></td>
+</tr>
+<tr>
+	<td>typeKeys</td>
+	<td>name=data[Participant][cod_icd10_code]</td>
+	<td>c1</td>
+</tr>
+<tr>
+	<td>waitForVisible</td>
+	<td>css=.ui-autocomplete</td>
+	<td></td>
+</tr>
+<tr>
+	<td>mouseOver</td>
+	<td>css=.ui-autocomplete a.ui-corner-all</td>
+	<td></td>
+</tr>
+<tr>
+	<td>click</td>
+	<td>css=.ui-autocomplete a.ui-corner-all</td>
+	<td></td>
+</tr>
+<tr>
+	<td>verifyValue</td>
+	<td>name=data[Participant][cod_icd10_code]</td>
+	<td>C100</td>
+</tr>
+<!--Test 6 - Tool-->
+<tr>
+	<td>click</td>
+	<td>css=a.tool_popup</td>
+	<td></td>
+</tr>
+<tr>
+	<td>waitForVisible</td>
+	<td>name=data[0][term]</td>
+	<td></td>
+</tr>
+<tr>
+	<td>type</td>
+	<td>name=data[0][term]</td>
+	<td>foot</td>
+</tr>
+<tr>
+	<td>click</td>
+	<td>link=Search</td>
+	<td></td>
+</tr>
+<tr>
+	<td>waitForTextPresent</td>
+	<td>Wrist or foot drop (acquired)</td>
+	<td></td>
+</tr>
+<tr>
+	<td>waitForTextPresent</td>
+	<td>Select An ICD-10 Code</td>
+	<td></td>
+</tr>
+<tr>
+	<td>click</td>
+	<td>css=#default_popup div.frame a.detail.icon16</td>
+	<td></td>
+</tr>
+<tr>
+	<td>verifyValue</td>
+	<td>name=data[Participant][cod_icd10_code]</td>
+	<td>M213</td>
+</tr>
+<!--Test 7 - Field numeral length validation-->
+<tr>
+	<td>open</td>
+	<td>InventoryManagement/SampleMasters/add/1/2</td>
+	<td></td>
+</tr>
+<tr>
+	<td>type</td>
+	<td>name=data[SampleDetail][collected_volume]</td>
+	<td>123456.7890</td>
+</tr>
+<tr>
+	<td>type</td>
+	<td>name=data[SampleDetail][collected_tube_nbr]</td>
+	<td>12345678901234567890</td>
+</tr>
+<tr>
+	<td>clickAndWait</td>
+	<td>css=input.submit</td>
+	<td></td>
+</tr>
+<tr>
+	<td>verifyTextPresent</td>
+	<td>The value must be between -2.14748e+9 and 2.14748e+9</td>
+	<td></td>
+</tr>
+<tr>
+	<td>verifyTextPresent</td>
+	<td>The value must be between -100000 and 100000</td>
+	<td></td>
+</tr>
+<!--Test 8 - Field string length-->
+<tr>
+	<td>open</td>
+	<td>InventoryManagement/Collections/add</td>
+	<td></td>
+</tr>
+<tr>
+	<td>type</td>
+	<td>name=data[Collection][acquisition_label]</td>
+	<td>123456789012345678901234567890123456789012345678901</td>
+</tr>
+<tr>
+	<td>clickAndWait</td>
+	<td>css=input.submit</td>
+	<td></td>
+</tr>
+<tr>
+	<td>verifyTextPresent</td>
+	<td>The string length must not exceed 50 characters!</td>
+	<td></td>
+</tr>
+<!--Cleaning up, deleting participant-->
+<tr>
+	<td>clickAndWait</td>
+	<td>//div[@id='header']/div/ul[2]/li/a</td>
+	<td></td>
+</tr>
+<tr>
+	<td>type</td>
+	<td>name=data[Participant][participant_identifier][]</td>
+	<td>sel_part_id</td>
+</tr>
+<tr>
+	<td>click</td>
+	<td>link=Search</td>
+	<td></td>
+</tr>
+<tr>
+	<td>waitForTextPresent</td>
+	<td>5 | 10 | 20 | 50</td>
+	<td></td>
+</tr>
+<tr>
+	<td>clickAndWait</td>
+	<td>css=a.detail.icon16</td>
+	<td></td>
+</tr>
+<tr>
+	<td>click</td>
+	<td>link=Delete</td>
+	<td></td>
+</tr>
+<tr>
+	<td>clickAndWait</td>
+	<td>link=Yes</td>
+	<td></td>
+</tr>
+</tbody></table>
+</body>
+</html>
