@@ -10,6 +10,8 @@ if($_POST){
 }
 $query = "";
 if($json->type == 'structures'){
+	
+	
 	if(is_numeric($json->val)){
 		$query = "SELECT alias FROM structures WHERE id='".$json->val."'";
 		$result = $db->query($query) or die("Query failed ".$db->error);
